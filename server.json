@@ -42,9 +42,9 @@
     },
     {
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png",
-      "name": "A la Carte",
+      "name": "Bamba buena",
       "price": "9.90",
-      "description": "Muitoi bom",
+      "description": "Bamba buemba",
       "available": true,
       "id": 6
     }
