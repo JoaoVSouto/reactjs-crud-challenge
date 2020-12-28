@@ -77,6 +77,24 @@ const Dashboard: React.FC = () => {
     }
   }
 
+  async function handleUpdateAvailability(food: IFoodPlate): Promise<void> {
+    try {
+      const { data: foodData } = await api.put(`foods/${food.id}`, {
+        ...food,
+        available: !food.available,
+      });
+
+      const updatedFoods = [...foods];
+      const foodToBeUpdatedIndex = updatedFoods.findIndex(
+        updatedFood => updatedFood.id === foodData.id,
+      );
+      updatedFoods[foodToBeUpdatedIndex] = foodData;
+      setFoods(updatedFoods);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   function toggleModal(): void {
     setModalOpen(!modalOpen);
   }
@@ -113,6 +131,7 @@ const Dashboard: React.FC = () => {
               food={food}
               handleDelete={handleDeleteFood}
               handleEditFood={handleEditFood}
+              handleUpdateAvailability={handleUpdateAvailability}
             />
           ))}
       </FoodsContainer>
